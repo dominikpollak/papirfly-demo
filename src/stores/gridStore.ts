@@ -1,23 +1,30 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { GridLayoutType } from "../types/gridTypes";
+import type { Grid, GridLayoutType } from "../types/gridTypes";
 
 type GridStore = {
   layout: GridLayoutType;
-  grid: any;
+  grid: Grid[];
   setLayout: (layout: GridLayoutType) => void;
-  setGrid: (grid: any) => void;
+  setGrid: (grid: Grid[]) => void;
+  maxRenderCount: number;
+  setMaxRenderCount: (count: number) => void;
 };
 
 export const useGridStore = create<GridStore>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       layout: "even",
       setLayout: (layout) => set({ layout }),
-      grid: {},
+      grid: [],
       setGrid: (grid) =>
         set(() => ({
           grid,
+        })),
+      maxRenderCount: -1,
+      setMaxRenderCount: (count) =>
+        set(() => ({
+          maxRenderCount: count,
         })),
     }),
     {
