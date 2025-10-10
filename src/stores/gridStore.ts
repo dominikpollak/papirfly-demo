@@ -9,6 +9,10 @@ type GridStore = {
   setGrid: (grid: Grid[]) => void;
   maxRenderCount: number;
   setMaxRenderCount: (count: number) => void;
+  title: string;
+  setTitle: (title: string) => void;
+  subTitle: string;
+  setSubTitle: (subTitle: string) => void;
 };
 
 export const useGridStore = create<GridStore>()(
@@ -25,6 +29,16 @@ export const useGridStore = create<GridStore>()(
       setMaxRenderCount: (count) =>
         set(() => ({
           maxRenderCount: count,
+        })),
+      title: "",
+      setTitle: (title) =>
+        set(() => ({
+          title,
+        })),
+      subTitle: "",
+      setSubTitle: (subTitle) =>
+        set(() => ({
+          subTitle,
         })),
     }),
     {
