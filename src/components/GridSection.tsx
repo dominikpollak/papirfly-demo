@@ -1,4 +1,4 @@
-type GridLayoutType = "even" | "mixed";
+import type { GridLayoutType } from "../types/gridTypes";
 
 interface GridSectionProps {
   layout: GridLayoutType;
