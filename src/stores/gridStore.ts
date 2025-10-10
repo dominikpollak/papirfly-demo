@@ -6,6 +6,7 @@ type GridStore = {
   layout: GridLayoutType;
   grid: Grid[];
   setLayout: (layout: GridLayoutType) => void;
+  //could get separated into add,delete,update setters
   setGrid: (grid: Grid[]) => void;
   maxRenderCount: number;
   setMaxRenderCount: (count: number) => void;
