@@ -1,3 +1,9 @@
+import { SettingsModal } from "../components/SettingsModal";
+
 export const MainPage = () => {
-  return <div>MainPage</div>;
+  return (
+    <div>
+      <SettingsModal />
+    </div>
+  );
 };

@@ -1,0 +1,11 @@
+@use "variables" as v;
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400;
+  padding: v.$space-3;
+  background-color: v.$content;
+}
