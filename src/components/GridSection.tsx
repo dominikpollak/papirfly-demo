@@ -29,20 +29,22 @@ export const GridSection = () => {
               layout === "even" ? "grid-even" : "grid-mixed"
             }`}
           >
-            {group.map((g, i) => (
-              <div
-                key={i}
-                className="tile"
-                style={{
-                  background: g.color,
-                  ...(isValidUrl(g.image)
-                    ? { backgroundImage: `url(${g.image})` }
-                    : {}),
-                }}
-              >
-                {g.text}
-              </div>
-            ))}
+            {group.map((g, i) => {
+              return (
+                <div
+                  key={`${i}-${g.image ?? "noimg"}`}
+                  className="tile"
+                  style={{
+                    background: g.color,
+                    ...(isValidUrl(g.image)
+                      ? { backgroundImage: `url(${g.image})` }
+                      : {}),
+                  }}
+                >
+                  {g.text}
+                </div>
+              );
+            })}
           </div>
         </div>
       ))}
