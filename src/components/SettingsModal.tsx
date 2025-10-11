@@ -151,9 +151,7 @@ export const SettingsModal = () => {
                   size="small"
                   type="number"
                   value={maxRenderCount < 0 ? 20 : maxRenderCount}
-                  onChange={(e) =>
-                    setMaxRenderCount(parseInt(e.target.value || "0", 10))
-                  }
+                  onChange={(e) => setMaxRenderCount(parseInt(e.target.value))}
                   fullWidth
                 />
               )}
