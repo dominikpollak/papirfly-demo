@@ -17,7 +17,6 @@
   grid-template-columns: 320px 1fr;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
   overflow: hidden;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 .settingsModal__sidebar {
   padding: 16px;
@@ -76,7 +75,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  margin: 8px 0;
 }
 
 .tilesTable {
@@ -177,6 +176,11 @@
   background-color: transparent;
   cursor: pointer;
   justify-self: end;
+  color: #516173;
+}
+
+.grayText {
+  color: #516173;
 }
 
 :root {

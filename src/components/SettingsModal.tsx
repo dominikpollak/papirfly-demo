@@ -22,16 +22,22 @@ import {
   type DropResult,
 } from "@hello-pangea/dnd";
 import { useGridStore } from "../stores/gridStore";
-import { Close, Settings } from "@mui/icons-material";
+import {
+  Close,
+  DeleteForever,
+  DeleteRounded,
+  MoreHoriz,
+  Settings,
+} from "@mui/icons-material";
 import { useState } from "react";
 import type { Grid } from "../types/gridTypes";
 import { COLOR_OPTIONS } from "../constants/constants";
 
-const makeTile = (): Tile => ({
+const makeTile = (): Grid => ({
   id: `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
   color: "blue",
   text: "",
-  link: "",
+  image: "",
 });
 
 export const SettingsModal = () => {
@@ -83,7 +89,7 @@ export const SettingsModal = () => {
 
       <Modal open={open} onClose={handleClose}>
         <Box className="settingsModal">
-          {/* Left sidebar */}
+          {/* Left panel */}
           <aside className="settingsModal__sidebar">
             <header className="settingsModal__sidebarHeader">
               <div className="dotGrid" />
@@ -139,16 +145,18 @@ export const SettingsModal = () => {
                 />
               </div>
 
-              <TextField
-                label="Tiles visible"
-                size="small"
-                type="number"
-                value={maxRenderCount < 0 ? 20 : maxRenderCount}
-                onChange={(e) =>
-                  setMaxRenderCount(parseInt(e.target.value || "0", 10))
-                }
-                fullWidth
-              />
+              {maxRenderCount !== -1 && (
+                <TextField
+                  label="Tiles visible"
+                  size="small"
+                  type="number"
+                  value={maxRenderCount < 0 ? 20 : maxRenderCount}
+                  onChange={(e) =>
+                    setMaxRenderCount(parseInt(e.target.value || "0", 10))
+                  }
+                  fullWidth
+                />
+              )}
             </div>
 
             <Button className="updateBtn" variant="contained" fullWidth>
@@ -156,17 +164,26 @@ export const SettingsModal = () => {
             </Button>
           </aside>
 
-          {/* Right pane */}
+          {/* Right panel */}
           <section className="settingsModal__content">
             <button onClick={handleClose} className="closeBtn">
-              <Close />
+              <Close
+                fontSize={"small"}
+                sx={{
+                  strokeWidth: 8,
+                }}
+              />
             </button>
             <div className="contentHeader">
-              <Typography variant="subtitle1">Tiles</Typography>
+              <Typography variant="subtitle1" className="grayText">
+                Tiles
+              </Typography>
               <Button
                 variant="contained"
+                sx={{ "& .MuiButton-startIcon": { marginRight: "4px" } }}
                 startIcon={<AddIcon />}
                 onClick={addTile}
+                size="small"
               >
                 Add
               </Button>
@@ -211,8 +228,12 @@ export const SettingsModal = () => {
                               <div className="col bgCol">
                                 <Select
                                   size="small"
-                                  fullWidth
                                   value={tile.color}
+                                  sx={{
+                                    "& .MuiOutlinedInput-notchedOutline": {
+                                      border: "none",
+                                    },
+                                  }}
                                   renderValue={(selectedValue) => (
                                     <div
                                       className="swatch"
@@ -283,17 +304,17 @@ export const SettingsModal = () => {
                               </div>
 
                               <div className="col actionsCol">
-                                <Tooltip title="More">
-                                  <IconButton size="small">
-                                    <MoreVertIcon />
-                                  </IconButton>
-                                </Tooltip>
                                 <Tooltip title="Delete">
                                   <IconButton
                                     size="small"
                                     onClick={() => deleteTile(tile.id)}
                                   >
-                                    <DeleteOutlineIcon />
+                                    <DeleteRounded />
+                                  </IconButton>
+                                </Tooltip>
+                                <Tooltip title="More">
+                                  <IconButton size="small">
+                                    <MoreHoriz />
                                   </IconButton>
                                 </Tooltip>
                               </div>

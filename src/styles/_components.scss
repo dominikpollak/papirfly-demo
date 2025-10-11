@@ -20,8 +20,8 @@
   grid-template-columns: 320px 1fr;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
   overflow: hidden;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto,
-    "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  //   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto,
+  //     "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
 
   &__sidebar {
     padding: 16px;
@@ -82,7 +82,7 @@
   .contentHeader {
     width: 100%;
     @include m.flexRow(space-between);
-    margin-bottom: 8px;
+    margin: 8px 0;
   }
 }
 
@@ -191,4 +191,9 @@
   background-color: transparent;
   cursor: pointer;
   justify-self: end;
+  color: v.$grayText;
+}
+
+.grayText {
+  color: v.$grayText;
 }
