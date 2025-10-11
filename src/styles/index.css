@@ -220,7 +220,20 @@
 }
 
 .tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
   height: 370px;
+  transition-duration: 300ms;
+}
+.tile:hover {
+  background-size: auto 110%;
 }
 
 :root {

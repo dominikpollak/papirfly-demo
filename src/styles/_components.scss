@@ -238,5 +238,5 @@
 }
 
 .tile {
-  height: 370px;
+  @include m.baseTile();
 }

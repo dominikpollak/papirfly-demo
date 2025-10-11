@@ -1,9 +1,4 @@
 import { useGridStore } from "../stores/gridStore";
-import type { GridLayoutType } from "../types/gridTypes";
-
-interface GridSectionProps {
-  layout: GridLayoutType;
-}
 
 export const GridSection = () => {
   const { grid, layout } = useGridStore();
@@ -14,6 +9,7 @@ export const GridSection = () => {
           className="tile"
           style={{
             backgroundColor: g.color,
+            backgroundImage: `url(${g.image})`,
           }}
         >
           {g.text}
