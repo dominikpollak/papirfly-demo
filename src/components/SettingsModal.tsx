@@ -91,18 +91,13 @@ export const SettingsModal = () => {
       <Modal open={open} onClose={handleClose}>
         <Box className="settingsModal">
           <button onClick={handleClose} className="closeBtn">
-            <Close
-              fontSize={"small"}
-              sx={{
-                strokeWidth: 8,
-              }}
-            />
+            <Close fontSize={"small"} />
           </button>
           {/* Left panel */}
           <aside className="settingsModal__sidebar">
             <header className="settingsModal__sidebarHeader">
               <Apps color="primary" />
-              <Typography variant="subtitle2">TILES</Typography>
+              <span className="grayText">TILES</span>
             </header>
 
             <div className="settingsModal__section">
@@ -140,7 +135,6 @@ export const SettingsModal = () => {
                   value={subTitle}
                   onChange={(e) => setSubTitle(e.target.value)}
                   fullWidth
-                  sx={{ mt: 1 }}
                 />
               </div>
             </div>
@@ -150,30 +144,34 @@ export const SettingsModal = () => {
             <div className="settingsModal__section">
               <Typography className="sectionTitle">Other</Typography>
 
-              <div className="row">
-                <Typography>Load all</Typography>
-                <Switch
-                  checked={maxRenderCount < 0}
-                  onChange={(e) => setMaxRenderCount(e.target.checked ? -1 : 6)}
-                />
-              </div>
-
-              {maxRenderCount !== -1 && (
-                <div className="textFieldRow">
-                  <span>Tiles visible</span>
-                  <TextField
-                    size="small"
-                    type="number"
-                    sx={{
-                      width: "70px",
-                    }}
-                    value={maxRenderCount < 0 ? 6 : maxRenderCount}
+              <section>
+                <div className="row">
+                  <span>Load all</span>
+                  <Switch
+                    checked={maxRenderCount < 0}
                     onChange={(e) =>
-                      setMaxRenderCount(parseInt(e.target.value))
+                      setMaxRenderCount(e.target.checked ? -1 : 6)
                     }
                   />
                 </div>
-              )}
+
+                {maxRenderCount !== -1 && (
+                  <div className="textFieldRow row">
+                    <span>Tiles visible</span>
+                    <TextField
+                      size="small"
+                      type="number"
+                      sx={{
+                        width: "70px",
+                      }}
+                      value={maxRenderCount < 0 ? 6 : maxRenderCount}
+                      onChange={(e) =>
+                        setMaxRenderCount(parseInt(e.target.value))
+                      }
+                    />
+                  </div>
+                )}
+              </section>
             </div>
 
             <Button className="updateBtn" variant="contained" fullWidth>
@@ -184,7 +182,7 @@ export const SettingsModal = () => {
           {/* Right panel */}
           <section className="settingsModal__content">
             <div className="contentHeader">
-              <Typography variant="subtitle1" className="grayText">
+              <Typography variant="subtitle2" className="grayText">
                 Tiles
               </Typography>
               <Button

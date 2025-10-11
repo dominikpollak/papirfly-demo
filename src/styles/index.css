@@ -35,6 +35,8 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 500;
 }
 .settingsModal__section {
   padding: 12px 0;
@@ -55,6 +57,23 @@
   align-items: center;
   justify-content: space-between;
   margin: 6px 0;
+  font-size: 13px;
+}
+.settingsModal__section section {
+  margin-top: 1rem;
+  border: 1px solid #e2e7ee;
+  border-radius: 0.25rem;
+}
+.settingsModal__section section .row {
+  padding: 0.25rem 0.5rem;
+  margin: 0;
+}
+.settingsModal__section section .row:first-child {
+  border-radius: 0.25rem 0.25rem 0 0;
+  background-color: #f9fafb;
+}
+.settingsModal__section section .row:nth-child(2) {
+  border-top: 1px solid #e2e7ee;
 }
 .settingsModal .updateBtn {
   margin-top: 12px;
@@ -211,7 +230,7 @@
   width: 25px;
   height: 25px;
   cursor: pointer;
-  color: #516173;
+  color: #9fa7bb;
 }
 
 .grayText {
@@ -279,10 +298,13 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-top: 0.5rem;
 }
 .textFieldRow span {
   min-width: 60px;
-  font-size: 13px;
+  font-size: 14px;
   color: #516173;
 }
 

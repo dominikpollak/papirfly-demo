@@ -21,7 +21,6 @@ function App() {
           },
         },
       },
-
       MuiOutlinedInput: {
         styleOverrides: {
           root: {
@@ -34,6 +33,13 @@ function App() {
             "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
               borderColor: "#407cff",
             },
+          },
+        },
+      },
+      MuiTypography: {
+        styleOverrides: {
+          root: {
+            fontFamily: "Inter",
           },
         },
       },
