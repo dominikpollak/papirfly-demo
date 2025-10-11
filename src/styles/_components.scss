@@ -33,16 +33,8 @@
   &__sidebarHeader {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: v.$space-3;
     margin-bottom: 12px;
-
-    .dotGrid {
-      width: 18px;
-      height: 18px;
-      background-image: radial-gradient(#4069ff 2px, transparent 2px);
-      background-size: 6px 6px;
-      border-radius: 4px;
-    }
   }
 
   &__section {
@@ -124,27 +116,6 @@
   &:last-child {
     border-bottom: 0;
   }
-
-  .dragCol {
-    cursor: grab;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #9aa3af;
-  }
-  .bgCol {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .bgSwatch {
-    min-width: 0;
-  }
-  .actionsCol {
-    display: flex;
-    justify-content: flex-end;
-    gap: 4px;
-  }
 }
 
 .swatch {
@@ -162,6 +133,31 @@
     border-right: 0;
     border-bottom: 1px solid #eef0f2;
   }
+}
+
+.dragCol {
+  @include m.col();
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: v.$icon;
+}
+.bgCol {
+  @include m.col();
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.bgSwatch {
+  @include m.col();
+  min-width: 0;
+}
+.actionsCol {
+  @include m.col();
+  width: 100%;
+  @include m.flexRow(end);
+  gap: 4px;
 }
 
 .settingsBtn {

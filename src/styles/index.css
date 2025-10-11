@@ -27,15 +27,8 @@
 .settingsModal__sidebarHeader {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 1rem;
   margin-bottom: 12px;
-}
-.settingsModal__sidebarHeader .dotGrid {
-  width: 18px;
-  height: 18px;
-  background-image: radial-gradient(#4069ff 2px, transparent 2px);
-  background-size: 6px 6px;
-  border-radius: 4px;
 }
 .settingsModal__section {
   padding: 12px 0;
@@ -114,26 +107,6 @@
 .tileRow:last-child {
   border-bottom: 0;
 }
-.tileRow .dragCol {
-  cursor: grab;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #9aa3af;
-}
-.tileRow .bgCol {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.tileRow .bgSwatch {
-  min-width: 0;
-}
-.tileRow .actionsCol {
-  display: flex;
-  justify-content: flex-end;
-  gap: 4px;
-}
 
 .swatch {
   width: 18px;
@@ -151,6 +124,44 @@
     border-bottom: 1px solid #eef0f2;
   }
 }
+.dragCol {
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9fa7bb;
+}
+.dragCol svg {
+  color: #9fa7bb;
+}
+
+.bgCol {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.bgCol svg {
+  color: #9fa7bb;
+}
+
+.bgSwatch {
+  min-width: 0;
+}
+.bgSwatch svg {
+  color: #9fa7bb;
+}
+
+.actionsCol {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 4px;
+}
+.actionsCol svg {
+  color: #9fa7bb;
+}
+
 .settingsBtn {
   background-color: #2f3748;
   display: flex;

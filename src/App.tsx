@@ -13,6 +13,13 @@ function App() {
           },
         },
       },
+      MuiIconButton: {
+        styleOverrides: {
+          root: {
+            color: "#9fa7bb",
+          },
+        },
+      },
     },
   });
   return (

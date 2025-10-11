@@ -12,9 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import {
   DragDropContext,
   Droppable,
@@ -23,11 +21,13 @@ import {
 } from "@hello-pangea/dnd";
 import { useGridStore } from "../stores/gridStore";
 import {
+  Apps,
+  ArrowDropDown,
   Close,
-  DeleteForever,
   DeleteRounded,
   MoreHoriz,
   Settings,
+  SwapVert,
 } from "@mui/icons-material";
 import { useState } from "react";
 import type { Grid } from "../types/gridTypes";
@@ -92,7 +92,7 @@ export const SettingsModal = () => {
           {/* Left panel */}
           <aside className="settingsModal__sidebar">
             <header className="settingsModal__sidebarHeader">
-              <div className="dotGrid" />
+              <Apps color="primary" />
               <Typography variant="subtitle2">TILES</Typography>
             </header>
 
@@ -191,11 +191,15 @@ export const SettingsModal = () => {
 
             <section className="tilesTable">
               <div className="tilesTable__head">
-                <div className="col dragCol" />
-                <div className="col bgCol">BG</div>
-                <div className="col textCol">TEXT</div>
-                <div className="col linkCol">LINK</div>
-                <div className="col actionsCol" />
+                <div className="dragCol">
+                  <SwapVert />
+                </div>
+                <div className="bgCol">BG</div>
+                <div className="textCol">TEXT</div>
+                <div className="linkCol">LINK</div>
+                <div className="actionsCol">
+                  <ArrowDropDown />
+                </div>
               </div>
 
               <DragDropContext onDragEnd={onDragEnd}>
@@ -232,6 +236,9 @@ export const SettingsModal = () => {
                                   sx={{
                                     "& .MuiOutlinedInput-notchedOutline": {
                                       border: "none",
+                                    },
+                                    "& .MuiSelect-select": {
+                                      paddingLeft: 0,
                                     },
                                   }}
                                   renderValue={(selectedValue) => (
