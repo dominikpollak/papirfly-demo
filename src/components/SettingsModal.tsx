@@ -31,7 +31,7 @@ import {
 } from "@mui/icons-material";
 import { useState } from "react";
 import type { Grid } from "../types/gridTypes";
-import { COLOR_OPTIONS } from "../constants/constants";
+import { COLOR_OPTIONS } from "../utils/constants";
 
 const makeTile = (): Grid => ({
   id: `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
@@ -90,6 +90,14 @@ export const SettingsModal = () => {
 
       <Modal open={open} onClose={handleClose}>
         <Box className="settingsModal">
+          <button onClick={handleClose} className="closeBtn">
+            <Close
+              fontSize={"small"}
+              sx={{
+                strokeWidth: 8,
+              }}
+            />
+          </button>
           {/* Left panel */}
           <aside className="settingsModal__sidebar">
             <header className="settingsModal__sidebarHeader">
@@ -151,14 +159,20 @@ export const SettingsModal = () => {
               </div>
 
               {maxRenderCount !== -1 && (
-                <TextField
-                  label="Tiles visible"
-                  size="small"
-                  type="number"
-                  value={maxRenderCount < 0 ? 6 : maxRenderCount}
-                  onChange={(e) => setMaxRenderCount(parseInt(e.target.value))}
-                  fullWidth
-                />
+                <div className="textFieldRow">
+                  <span>Tiles visible</span>
+                  <TextField
+                    size="small"
+                    type="number"
+                    sx={{
+                      width: "70px",
+                    }}
+                    value={maxRenderCount < 0 ? 6 : maxRenderCount}
+                    onChange={(e) =>
+                      setMaxRenderCount(parseInt(e.target.value))
+                    }
+                  />
+                </div>
               )}
             </div>
 
@@ -169,14 +183,6 @@ export const SettingsModal = () => {
 
           {/* Right panel */}
           <section className="settingsModal__content">
-            <button onClick={handleClose} className="closeBtn">
-              <Close
-                fontSize={"small"}
-                sx={{
-                  strokeWidth: 8,
-                }}
-              />
-            </button>
             <div className="contentHeader">
               <Typography variant="subtitle1" className="grayText">
                 Tiles
