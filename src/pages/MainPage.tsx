@@ -1,9 +1,11 @@
+import { GridSection } from "../components/GridSection";
 import { SettingsModal } from "../components/SettingsModal";
 
 export const MainPage = () => {
   return (
-    <div>
+    <main className="mainPage">
+      <GridSection />
       <SettingsModal />
-    </div>
+    </main>
   );
 };

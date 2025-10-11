@@ -142,7 +142,6 @@
   border: 1px solid #e5e7eb;
 }
 
-/* make modal responsive */
 @media (max-width: 1024px) {
   .settingsModal {
     grid-template-columns: 1fr;
@@ -158,6 +157,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  border: none;
   width: 50px;
   height: 50px;
   aspect-ratio: square;
@@ -183,6 +183,46 @@
   color: #516173;
 }
 
+.grid-even {
+  display: grid;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.grid-mixed {
+  width: 100%;
+  display: grid;
+  margin: 0 auto;
+  max-width: 1280px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  grid-auto-flow: dense;
+  gap: 20px;
+  /* Odd rows: large tile at the end (pattern: 1fr 1fr 2fr) */
+  /* Even rows: large tile at the beginning (pattern: 2fr 1fr 1fr) */
+}
+.grid-mixed > * {
+  grid-column: span 1;
+}
+.grid-mixed > *:nth-child(6n+3) {
+  grid-column: 3/span 2;
+}
+.grid-mixed > *:nth-child(6n+4) {
+  grid-column: 1/span 2;
+}
+
+.mainPage {
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.tile {
+  height: 370px;
+}
+
 :root {
   font-family: "Poppins", sans-serif;
   line-height: 1.5;
@@ -197,8 +237,6 @@
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  min-width: 100%;
   min-height: 100vh;
 }/*# sourceMappingURL=index.css.map */
