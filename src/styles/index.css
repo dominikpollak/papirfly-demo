@@ -8,6 +8,177 @@
   background-color: #fff;
 }
 
+.settingsModal {
+  position: absolute;
+  inset: 40px;
+  background: #f9fafb;
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+.settingsModal__sidebar {
+  padding: 16px;
+  border-right: 1px solid #eef0f2;
+  overflow: auto;
+  background-color: #fff;
+}
+.settingsModal__sidebarHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.settingsModal__sidebarHeader .dotGrid {
+  width: 18px;
+  height: 18px;
+  background-image: radial-gradient(#4069ff 2px, transparent 2px);
+  background-size: 6px 6px;
+  border-radius: 4px;
+}
+.settingsModal__section {
+  padding: 12px 0;
+}
+.settingsModal__section .label {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+.settingsModal__section .sectionTitle {
+  font-size: 12px;
+  color: #6b7280;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+}
+.settingsModal__section .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 6px 0;
+}
+.settingsModal .updateBtn {
+  margin-top: 12px;
+}
+
+.settingsModal__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  padding: 16px;
+  overflow: auto;
+}
+.settingsModal__content .contentHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.tilesTable {
+  width: 100%;
+  border: 1px solid #e2e7ee;
+  border-radius: 0.5rem;
+}
+.tilesTable__head {
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: 8px 8px 0 0;
+}
+.tilesTable__body {
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  background: #fafbfc;
+}
+
+.tilesTable__head,
+.tileRow {
+  display: grid;
+  grid-template-columns: 36px 80px minmax(200px, 1fr) minmax(260px, 1fr) 92px;
+  align-items: center;
+  gap: 12px;
+  background-color: #f1f4f8;
+}
+
+.tileRow {
+  background: #fff;
+  border-bottom: 1px solid #eef0f2;
+  padding: 10px 12px;
+}
+.tileRow:last-child {
+  border-bottom: 0;
+}
+.tileRow .dragCol {
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9aa3af;
+}
+.tileRow .bgCol {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tileRow .bgSwatch {
+  min-width: 0;
+}
+.tileRow .actionsCol {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1px solid #e5e7eb;
+}
+
+/* make modal responsive */
+@media (max-width: 1024px) {
+  .settingsModal {
+    grid-template-columns: 1fr;
+  }
+  .settingsModal__sidebar {
+    border-right: 0;
+    border-bottom: 1px solid #eef0f2;
+  }
+}
+.settingsBtn {
+  background-color: #2f3748;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  aspect-ratio: square;
+  transition-duration: 200ms;
+  cursor: pointer;
+}
+.settingsBtn > svg {
+  color: white;
+}
+.settingsBtn:hover {
+  scale: 1.05;
+}
+
+.closeBtn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  justify-self: end;
+}
+
 :root {
   font-family: "Poppins", sans-serif;
   line-height: 1.5;
