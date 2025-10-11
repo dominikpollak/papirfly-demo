@@ -137,7 +137,6 @@
 
 .dragCol {
   @include m.col();
-  cursor: grab;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -161,16 +160,21 @@
 }
 
 .settingsBtn {
+  position: fixed;
+  bottom: v.$space-4;
+  left: 50%;
+  transform: translateX(50%);
   background-color: v.$settingsBtn;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  border: none;
+  border: 1px solid v.$content;
   width: 50px;
   height: 50px;
   aspect-ratio: square;
   transition-duration: 200ms;
+  transform-origin: center;
   cursor: pointer;
 
   & > svg {
@@ -198,20 +202,18 @@
   display: grid;
   width: 100%;
   max-width: v.$container-xl;
-  margin: 0 auto;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  gap: 30px;
 }
 
 .grid-mixed {
   width: 100%;
   display: grid;
-  margin: 0 auto;
   max-width: v.$container-xl;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-auto-rows: 1fr;
   grid-auto-flow: dense;
-  gap: 20px;
+  gap: 30px;
 
   > * {
     grid-column: span 1;
@@ -229,10 +231,37 @@
 }
 
 .mainPage {
-  padding: v.$space-5 0;
+  padding: v.$space-6 0;
   width: 100%;
 }
 
 .tile {
   @include m.baseTile();
+}
+
+.gridContainer {
+  width: 100%;
+  margin: 70px auto;
+}
+
+.textFieldRow {
+  @include m.flexRow(start);
+  gap: v.$space-3;
+
+  span {
+    min-width: 60px;
+    font-size: 13px;
+    color: v.$grayText;
+  }
+}
+
+.selectCol {
+  @include m.flexCol(start);
+  gap: v.$space-2;
+
+  span {
+    min-width: 60px;
+    font-size: 13px;
+    color: v.$grayText;
+  }
 }

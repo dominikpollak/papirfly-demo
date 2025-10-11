@@ -35,7 +35,7 @@ import { COLOR_OPTIONS } from "../constants/constants";
 
 const makeTile = (): Grid => ({
   id: `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
-  color: "blue",
+  color: COLOR_OPTIONS[0].value,
   text: "",
   image: "",
 });
@@ -55,13 +55,14 @@ export const SettingsModal = () => {
     setSubTitle,
     subTitle,
   } = useGridStore();
+  console.log(grid);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const addTile = () => {
-    const next = [...grid, makeTile()];
-    setGrid(next);
+    const newGrid = [...grid, makeTile()];
+    setGrid(newGrid);
   };
 
   const deleteTile = (id: string) => {
@@ -97,37 +98,43 @@ export const SettingsModal = () => {
             </header>
 
             <div className="settingsModal__section">
-              <Typography className="label">Display</Typography>
-              <Select
-                size="small"
-                fullWidth
-                value={layout}
-                onChange={(e) => setLayout(e.target.value)}
-              >
-                <MenuItem value="even">Even layout</MenuItem>
-                <MenuItem value="mixed">Mixed layout</MenuItem>
-              </Select>
+              <div className="selectCol">
+                <span>Display</span>
+                <Select
+                  size="small"
+                  fullWidth
+                  value={layout}
+                  onChange={(e) => setLayout(e.target.value)}
+                >
+                  <MenuItem value="even">Even layout</MenuItem>
+                  <MenuItem value="mixed">Mixed layout</MenuItem>
+                </Select>
+              </div>
             </div>
 
             <Divider />
 
             <div className="settingsModal__section">
               <Typography className="sectionTitle">Text</Typography>
-              <TextField
-                label="Title"
-                size="small"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                fullWidth
-              />
-              <TextField
-                label="Subtitle"
-                size="small"
-                value={subTitle}
-                onChange={(e) => setSubTitle(e.target.value)}
-                fullWidth
-                sx={{ mt: 1 }}
-              />
+              <div className="textFieldRow">
+                <span>Title</span>
+                <TextField
+                  size="small"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  fullWidth
+                />
+              </div>
+              <div className="textFieldRow">
+                <span>Subtitle</span>
+                <TextField
+                  size="small"
+                  value={subTitle}
+                  onChange={(e) => setSubTitle(e.target.value)}
+                  fullWidth
+                  sx={{ mt: 1 }}
+                />
+              </div>
             </div>
 
             <Divider />
@@ -139,9 +146,7 @@ export const SettingsModal = () => {
                 <Typography>Load all</Typography>
                 <Switch
                   checked={maxRenderCount < 0}
-                  onChange={(e) =>
-                    setMaxRenderCount(e.target.checked ? -1 : 20)
-                  }
+                  onChange={(e) => setMaxRenderCount(e.target.checked ? -1 : 6)}
                 />
               </div>
 
@@ -150,7 +155,7 @@ export const SettingsModal = () => {
                   label="Tiles visible"
                   size="small"
                   type="number"
-                  value={maxRenderCount < 0 ? 20 : maxRenderCount}
+                  value={maxRenderCount < 0 ? 6 : maxRenderCount}
                   onChange={(e) => setMaxRenderCount(parseInt(e.target.value))}
                   fullWidth
                 />
@@ -243,7 +248,7 @@ export const SettingsModal = () => {
                                     <div
                                       className="swatch"
                                       style={{
-                                        backgroundColor: selectedValue,
+                                        background: selectedValue,
                                       }}
                                     />
                                   )}
@@ -267,7 +272,7 @@ export const SettingsModal = () => {
                                       <div
                                         className="swatch"
                                         style={{
-                                          backgroundColor: option.value,
+                                          background: option.value,
                                         }}
                                       ></div>
                                       <span>{option.label}</span>

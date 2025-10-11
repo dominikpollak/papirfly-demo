@@ -125,7 +125,6 @@
   }
 }
 .dragCol {
-  cursor: grab;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -163,16 +162,21 @@
 }
 
 .settingsBtn {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(50%);
   background-color: #2f3748;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  border: none;
+  border: 1px solid #fff;
   width: 50px;
   height: 50px;
   aspect-ratio: square;
   transition-duration: 200ms;
+  transform-origin: center;
   cursor: pointer;
 }
 .settingsBtn > svg {
@@ -198,20 +202,18 @@
   display: grid;
   width: 100%;
   max-width: 1280px;
-  margin: 0 auto;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  gap: 30px;
 }
 
 .grid-mixed {
   width: 100%;
   display: grid;
-  margin: 0 auto;
   max-width: 1280px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-auto-rows: 1fr;
   grid-auto-flow: dense;
-  gap: 20px;
+  gap: 30px;
   /* Odd rows: large tile at the end (pattern: 1fr 1fr 2fr) */
   /* Even rows: large tile at the beginning (pattern: 2fr 1fr 1fr) */
 }
@@ -226,7 +228,7 @@
 }
 
 .mainPage {
-  padding: 2rem 0;
+  padding: 3rem 0;
   width: 100%;
 }
 
@@ -247,6 +249,35 @@
   background-size: auto 110%;
 }
 
+.gridContainer {
+  width: 100%;
+  margin: 70px auto;
+}
+
+.textFieldRow {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+}
+.textFieldRow span {
+  min-width: 60px;
+  font-size: 13px;
+  color: #516173;
+}
+
+.selectCol {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 0.5rem;
+}
+.selectCol span {
+  min-width: 60px;
+  font-size: 13px;
+  color: #516173;
+}
+
 :root {
   font-family: "Poppins", sans-serif;
   line-height: 1.5;
@@ -263,4 +294,29 @@ body {
   margin: 0;
   min-width: 100%;
   min-height: 100vh;
+}
+
+h1,
+h2 {
+  text-align: center;
+  line-height: 1rem;
+}
+
+h1 {
+  font-size: 34px;
+  line-height: 1;
+  font-weight: 600;
+  margin: 0;
+}
+
+h2 {
+  font-size: 10px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #9fa7bb;
 }/*# sourceMappingURL=index.css.map */

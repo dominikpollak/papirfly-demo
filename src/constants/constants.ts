@@ -1,5 +1,22 @@
 export const COLOR_OPTIONS = [
-  { value: "blue", label: "Blue" },
-  { value: "green", label: "Green" },
-  { value: "red", label: "Red" },
+  {
+    value: "linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)",
+    label: "Deep Blue",
+  },
+  {
+    value: "linear-gradient(135deg, #134e5e 0%, #71b280 100%)",
+    label: "Forest Green",
+  },
+  {
+    value: "linear-gradient(135deg, #42275a 0%, #734b6d 100%)",
+    label: "Plum Purple",
+  },
+  {
+    value: "linear-gradient(135deg, #232526 0%, #414345 100%)",
+    label: "Charcoal Gray",
+  },
+  {
+    value: "linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)",
+    label: "Indigo Electric",
+  },
 ];
