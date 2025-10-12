@@ -98,8 +98,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 2rem auto 0.5rem 0;
   color: #516173;
+  margin: 0.5rem auto 0.5rem 0;
+}
+@media (min-width: 1024px) {
+  .settingsModal__content .contentHeader {
+    margin: 2rem auto 0.5rem 0;
+  }
 }
 
 .tilesTable {
