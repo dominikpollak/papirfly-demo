@@ -259,7 +259,7 @@
   text-decoration: none;
 }
 .grid-even .tile:hover {
-  background-position: 55% 55%;
+  background-position: 65% 55%;
   transform: scale(1.02);
 }
 
@@ -316,7 +316,7 @@
   text-decoration: none;
 }
 .grid-mixed .tile:hover {
-  background-position: 55% 55%;
+  background-position: 65% 55%;
   transform: scale(1.02);
 }
 
@@ -337,7 +337,7 @@
 }
 .gridContainer {
   width: 100%;
-  margin: 70px auto;
+  margin: 60px auto 90px;
 }
 
 .textFieldRow {
