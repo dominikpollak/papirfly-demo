@@ -33,6 +33,7 @@ import { useState } from "react";
 import type { Grid } from "../types/gridTypes";
 import { COLOR_OPTIONS } from "../utils/constants";
 import { isValidUrl } from "../utils/utils";
+import { updateGridData } from "../api/updateGrid";
 
 const makeTile = (): Grid => ({
   id: `${Date.now()}-${Math.random().toString().slice(0, 9)}`,
@@ -176,7 +177,12 @@ export const SettingsModal = () => {
               </section>
             </div>
 
-            <Button className="updateBtn" variant="contained" fullWidth>
+            <Button
+              onClick={updateGridData}
+              className="updateBtn"
+              variant="contained"
+              fullWidth
+            >
               Update
             </Button>
           </aside>
