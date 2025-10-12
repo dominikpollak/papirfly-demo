@@ -10,7 +10,6 @@ function App() {
             textTransform: "none",
             backgroundColor: "#407cff",
             fontWeight: 500,
-            boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.2)",
           },
         },
       },
@@ -24,22 +23,42 @@ function App() {
       MuiOutlinedInput: {
         styleOverrides: {
           root: {
-            "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#e2e7ee",
+            height: 35,
+            fontSize: 14,
+            "& .MuiInputBase-input": {
+              padding: "6px 10px",
+              fontSize: 14,
             },
-            "&:hover .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#c5ccda",
-            },
-            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#407cff",
-            },
+          },
+          notchedOutline: {
+            borderColor: "#e2e7ee",
           },
         },
       },
-      MuiTypography: {
+      MuiSelect: {
+        styleOverrides: {
+          outlined: {
+            height: 35,
+            fontSize: 12,
+            display: "flex",
+            alignItems: "center",
+          },
+          icon: {
+            color: "#9fa7bb",
+          },
+        },
+      },
+      MuiMenuItem: {
         styleOverrides: {
           root: {
-            fontFamily: "Inter",
+            fontSize: 14,
+          },
+        },
+      },
+      MuiInputLabel: {
+        styleOverrides: {
+          root: {
+            fontSize: 12,
           },
         },
       },

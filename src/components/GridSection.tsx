@@ -16,9 +16,9 @@ export const GridSection = () => {
   }
 
   return (
-    <div className="">
+    <>
       {chunkedGrid.map((group, index) => (
-        <div key={index} className="grid-section mb-8">
+        <div key={index} className="grid">
           <div>
             <h2 className="">{subTitle}</h2>
             <h1 className="">{title}</h1>
@@ -48,6 +48,6 @@ export const GridSection = () => {
           </div>
         </div>
       ))}
-    </div>
+    </>
   );
 };

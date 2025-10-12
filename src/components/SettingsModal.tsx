@@ -55,7 +55,6 @@ export const SettingsModal = () => {
     setSubTitle,
     subTitle,
   } = useGridStore();
-  console.log(grid);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -78,7 +77,6 @@ export const SettingsModal = () => {
   };
 
   const updateTile = (id: string, patch: Partial<Grid>) => {
-    console.log(id, patch);
     setGrid(grid.map((t) => (t.id === id ? { ...t, ...patch } : t)));
   };
 
@@ -257,7 +255,6 @@ export const SettingsModal = () => {
                                     />
                                   )}
                                   onChange={(e) => {
-                                    console.log(e.target.value);
                                     updateTile(tile.id, {
                                       color: e.target.value,
                                     });
