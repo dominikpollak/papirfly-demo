@@ -33,9 +33,10 @@ export const GridSection = () => {
               return (
                 <a
                   href={g.link}
-                  target="_blank"
+                  target={g.link ? "_blank" : "_self"}
                   key={`${i}-${g.image ?? "noimg"}`}
                   className="tile"
+                  onClick={(e) => !g.link && e.preventDefault()}
                   style={{
                     backgroundImage: isValidUrl(g.image)
                       ? `url(${g.image})`

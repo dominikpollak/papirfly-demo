@@ -35,7 +35,7 @@ import { COLOR_OPTIONS } from "../utils/constants";
 import { isValidUrl } from "../utils/utils";
 
 const makeTile = (): Grid => ({
-  id: `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+  id: `${Date.now()}-${Math.random().toString().slice(0, 9)}`,
   color: COLOR_OPTIONS[0].value,
   text: "",
   image: "",

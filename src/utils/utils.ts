@@ -1,4 +1,6 @@
-export const isValidUrl = (url: string): boolean => {
+export const isValidUrl = (url: string | undefined): boolean => {
+  if (!url) return false;
+
   const pattern = new RegExp(
     "^(https?:\\/\\/)?" +
       "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" +

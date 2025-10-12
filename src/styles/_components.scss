@@ -253,38 +253,39 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 30px;
 
-  > * {
-    grid-column: span 1;
+  @media (min-width: v.$container-lg) {
+    > * {
+      grid-column: span 1;
+    }
+    //   1fr 1fr 2fr
+    > *:nth-child(6n + 3) {
+      grid-column: 3 / span 2;
+    }
+
+    //   2fr 1fr 1fr
+    > *:nth-child(6n + 4) {
+      grid-column: 1 / span 2;
+    }
   }
 
-  //   1fr 1fr 2fr
-  > *:nth-child(6n + 3) {
-    grid-column: 3 / span 2;
-  }
-
-  //   2fr 1fr 1fr
-  > *:nth-child(6n + 4) {
-    grid-column: 1 / span 2;
-  }
-
-  @media (max-width: 1024px) {
-    grid-template-columns: 60% 40%;
+  @media (max-width: v.$container-lg) and (min-width: v.$container-md) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     overflow-x: hidden;
 
     > * {
-      grid-column: auto;
+      grid-column: span 2;
     }
 
-    > *:nth-child(odd) {
-      grid-column: 1 / 2;
+    > *:nth-child(4n + 1) {
+      grid-column: span 3;
     }
 
-    > *:nth-child(even) {
-      grid-column: 2 / 3;
+    > *:nth-child(4n + 4) {
+      grid-column: span 3;
     }
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: v.$container-md) {
     grid-template-columns: 1fr;
   }
 
