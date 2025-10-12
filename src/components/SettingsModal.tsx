@@ -178,168 +178,170 @@ export const SettingsModal = () => {
           </aside>
 
           {/* Right panel */}
-          <section className="settingsModal__content">
-            <div className="contentHeader">
-              <Typography variant="subtitle2" className="grayText">
-                Tiles
-              </Typography>
-              <Button
-                variant="contained"
-                sx={{ "& .MuiButton-startIcon": { marginRight: "4px" } }}
-                startIcon={<AddIcon />}
-                onClick={addTile}
-                size="small"
-              >
-                Add
-              </Button>
-            </div>
-
-            <section className="tilesTable">
-              <div className="tilesTable__head">
-                <div className="dragCol">
-                  <SwapVert />
-                </div>
-                <div className="bgCol">BG</div>
-                <div className="textCol">TEXT</div>
-                <div className="linkCol">LINK</div>
-                <div className="actionsCol">
-                  <ArrowDropDown />
-                </div>
+          <div className="settingsModal__scrollWrapper">
+            <section className="settingsModal__content">
+              <div className="contentHeader">
+                <Typography variant="subtitle2" className="grayText">
+                  Tiles
+                </Typography>
+                <Button
+                  variant="contained"
+                  sx={{ "& .MuiButton-startIcon": { marginRight: "4px" } }}
+                  startIcon={<AddIcon />}
+                  onClick={addTile}
+                  size="small"
+                >
+                  Add
+                </Button>
               </div>
 
-              <DragDropContext onDragEnd={onDragEnd}>
-                <Droppable droppableId="tiles-droppable">
-                  {(provided) => (
-                    <div
-                      className="tilesTable__body"
-                      ref={provided.innerRef}
-                      {...provided.droppableProps}
-                    >
-                      {grid.map((tile, index) => (
-                        <Draggable
-                          key={tile.id}
-                          draggableId={tile.id}
-                          index={index}
-                        >
-                          {(prov) => (
-                            <div
-                              className="tileRow"
-                              ref={prov.innerRef}
-                              {...prov.draggableProps}
-                            >
-                              <div
-                                className="col dragCol"
-                                {...prov.dragHandleProps}
-                              >
-                                <DragIndicatorIcon fontSize="small" />
-                              </div>
+              <section className="tilesTable">
+                <div className="tilesTable__head">
+                  <div className="dragCol">
+                    <SwapVert />
+                  </div>
+                  <div className="bgCol">BG</div>
+                  <div className="textCol">TEXT</div>
+                  <div className="linkCol">LINK</div>
+                  <div className="actionsCol">
+                    <ArrowDropDown />
+                  </div>
+                </div>
 
-                              <div className="col bgCol">
-                                <Select
-                                  size="small"
-                                  value={tile.color}
-                                  sx={{
-                                    "& .MuiOutlinedInput-notchedOutline": {
-                                      border: "none",
-                                    },
-                                    "& .MuiSelect-select": {
-                                      paddingLeft: 0,
-                                    },
-                                  }}
-                                  renderValue={(selectedValue) => (
-                                    <div
-                                      className="swatch"
-                                      style={{
-                                        background: selectedValue,
-                                      }}
-                                    />
-                                  )}
-                                  onChange={(e) => {
-                                    updateTile(tile.id, {
-                                      color: e.target.value,
-                                    });
-                                  }}
+                <DragDropContext onDragEnd={onDragEnd}>
+                  <Droppable droppableId="tiles-droppable">
+                    {(provided) => (
+                      <div
+                        className="tilesTable__body"
+                        ref={provided.innerRef}
+                        {...provided.droppableProps}
+                      >
+                        {grid.map((tile, index) => (
+                          <Draggable
+                            key={tile.id}
+                            draggableId={tile.id}
+                            index={index}
+                          >
+                            {(prov) => (
+                              <div
+                                className="tileRow"
+                                ref={prov.innerRef}
+                                {...prov.draggableProps}
+                              >
+                                <div
+                                  className="col dragCol"
+                                  {...prov.dragHandleProps}
                                 >
-                                  {COLOR_OPTIONS.map((option) => (
-                                    <MenuItem
-                                      key={option.value}
-                                      value={option.value}
-                                      style={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                        gap: "10px",
-                                      }}
-                                    >
+                                  <DragIndicatorIcon fontSize="small" />
+                                </div>
+
+                                <div className="col bgCol">
+                                  <Select
+                                    size="small"
+                                    value={tile.color}
+                                    sx={{
+                                      "& .MuiOutlinedInput-notchedOutline": {
+                                        border: "none",
+                                      },
+                                      "& .MuiSelect-select": {
+                                        paddingLeft: 0,
+                                      },
+                                    }}
+                                    renderValue={(selectedValue) => (
                                       <div
                                         className="swatch"
                                         style={{
-                                          background: option.value,
+                                          background: selectedValue,
                                         }}
-                                      ></div>
-                                      <span>{option.label}</span>
-                                    </MenuItem>
-                                  ))}
-                                </Select>
-                              </div>
-
-                              <div className="col textCol">
-                                <TextField
-                                  size="small"
-                                  placeholder="Label"
-                                  value={tile.text}
-                                  onChange={(e) =>
-                                    setGrid(
-                                      grid.map((t) =>
-                                        t.id === tile.id
-                                          ? { ...t, text: e.target.value }
-                                          : t
-                                      )
-                                    )
-                                  }
-                                  fullWidth
-                                />
-                              </div>
-
-                              <div className="col linkCol">
-                                <TextField
-                                  size="small"
-                                  placeholder="Enter URL"
-                                  value={tile.image || ""}
-                                  onChange={(e) =>
-                                    updateTile(tile.id, {
-                                      image: e.target.value,
-                                    })
-                                  }
-                                  fullWidth
-                                />
-                              </div>
-
-                              <div className="col actionsCol">
-                                <Tooltip title="Delete">
-                                  <IconButton
-                                    size="small"
-                                    onClick={() => deleteTile(tile.id)}
+                                      />
+                                    )}
+                                    onChange={(e) => {
+                                      updateTile(tile.id, {
+                                        color: e.target.value,
+                                      });
+                                    }}
                                   >
-                                    <DeleteRounded />
-                                  </IconButton>
-                                </Tooltip>
-                                <Tooltip title="More">
-                                  <IconButton size="small">
-                                    <MoreHoriz />
-                                  </IconButton>
-                                </Tooltip>
+                                    {COLOR_OPTIONS.map((option) => (
+                                      <MenuItem
+                                        key={option.value}
+                                        value={option.value}
+                                        style={{
+                                          display: "flex",
+                                          alignItems: "center",
+                                          gap: "10px",
+                                        }}
+                                      >
+                                        <div
+                                          className="swatch"
+                                          style={{
+                                            background: option.value,
+                                          }}
+                                        ></div>
+                                        <span>{option.label}</span>
+                                      </MenuItem>
+                                    ))}
+                                  </Select>
+                                </div>
+
+                                <div className="col textCol">
+                                  <TextField
+                                    size="small"
+                                    placeholder="Label"
+                                    value={tile.text}
+                                    onChange={(e) =>
+                                      setGrid(
+                                        grid.map((t) =>
+                                          t.id === tile.id
+                                            ? { ...t, text: e.target.value }
+                                            : t
+                                        )
+                                      )
+                                    }
+                                    fullWidth
+                                  />
+                                </div>
+
+                                <div className="col linkCol">
+                                  <TextField
+                                    size="small"
+                                    placeholder="Enter URL"
+                                    value={tile.image || ""}
+                                    onChange={(e) =>
+                                      updateTile(tile.id, {
+                                        image: e.target.value,
+                                      })
+                                    }
+                                    fullWidth
+                                  />
+                                </div>
+
+                                <div className="col actionsCol">
+                                  <Tooltip title="Delete">
+                                    <IconButton
+                                      size="small"
+                                      onClick={() => deleteTile(tile.id)}
+                                    >
+                                      <DeleteRounded />
+                                    </IconButton>
+                                  </Tooltip>
+                                  <Tooltip title="More">
+                                    <IconButton size="small">
+                                      <MoreHoriz />
+                                    </IconButton>
+                                  </Tooltip>
+                                </div>
                               </div>
-                            </div>
-                          )}
-                        </Draggable>
-                      ))}
-                      {provided.placeholder}
-                    </div>
-                  )}
-                </Droppable>
-              </DragDropContext>
+                            )}
+                          </Draggable>
+                        ))}
+                        {provided.placeholder}
+                      </div>
+                    )}
+                  </Droppable>
+                </DragDropContext>
+              </section>
             </section>
-          </section>
+          </div>
         </Box>
       </Modal>
     </>

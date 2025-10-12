@@ -24,11 +24,6 @@
   border-right: 1px solid #eef0f2;
   overflow: auto;
   background-color: #fff;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.settingsModal__sidebar::-webkit-scrollbar {
-  display: none;
 }
 .settingsModal__sidebarHeader {
   display: flex;
@@ -79,25 +74,30 @@
   margin-top: 12px;
 }
 
+.settingsModal__scrollWrapper {
+  overflow-x: auto;
+}
+
 .settingsModal__content {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: end;
-  padding: 16px 28px;
   overflow: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  min-width: 800px;
+  padding: 8px 16px;
 }
-.settingsModal__content::-webkit-scrollbar {
-  display: none;
+@media (min-width: 1024px) {
+  .settingsModal__content {
+    padding: 16px 28px;
+  }
 }
 .settingsModal__content .contentHeader {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 2rem 0 0.5rem;
+  margin: 2rem auto 0.5rem 0;
 }
 
 .tilesTable {
@@ -353,4 +353,8 @@ h2 {
   letter-spacing: 1px;
   text-align: center;
   color: #9fa7bb;
+}
+
+hr {
+  background-color: #f9fafb !important;
 }/*# sourceMappingURL=index.css.map */
