@@ -196,7 +196,13 @@ export const SettingsModal = () => {
                 </Typography>
                 <Button
                   variant="contained"
-                  sx={{ "& .MuiButton-startIcon": { marginRight: "4px" } }}
+                  sx={{
+                    "& .MuiButton-startIcon": {
+                      marginRight: "4px",
+                    },
+                    width: "70px",
+                    paddingLeft: "0",
+                  }}
                   startIcon={<AddIcon />}
                   onClick={addTile}
                   size="small"

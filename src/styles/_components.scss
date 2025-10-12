@@ -103,6 +103,7 @@
     width: 100%;
     @include m.flexRow(space-between);
     margin: v.$space-5 auto v.$space-2 0;
+    color: v.$grayText;
   }
 }
 
