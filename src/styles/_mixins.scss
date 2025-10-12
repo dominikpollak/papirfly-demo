@@ -28,6 +28,10 @@
     background-position: 65% 55%;
     transform: scale(1.02);
   }
+
+  & > span {
+    padding: v.$space-4;
+  }
 }
 
 @mixin col {

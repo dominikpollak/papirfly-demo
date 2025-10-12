@@ -43,7 +43,7 @@ export const GridSection = () => {
                       : g.color,
                   }}
                 >
-                  {g.text}
+                  <span>{g.text}</span>
                 </a>
               );
             })}
