@@ -27,10 +27,11 @@
 }
 .settingsModal__sidebarHeader {
   display: flex;
+  justify-content: start;
   align-items: center;
   gap: 1rem;
   margin-bottom: 12px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
 }
 .settingsModal__section {
@@ -49,8 +50,8 @@
 }
 .settingsModal__section .row {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   margin: 6px 0;
   font-size: 13px;
 }
@@ -156,8 +157,8 @@
 }
 .dragCol {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   color: #9fa7bb;
 }
 .dragCol svg {
@@ -166,6 +167,7 @@
 
 .bgCol {
   display: flex;
+  justify-content: start;
   align-items: center;
   gap: 0.5rem;
 }
@@ -194,12 +196,12 @@
 .settingsBtn {
   position: fixed;
   bottom: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #2f3748;
   display: flex;
   justify-content: center;
   align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #2f3748;
   border-radius: 50%;
   border: 1px solid #fff;
   width: 60px;

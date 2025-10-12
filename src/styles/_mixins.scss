@@ -1,6 +1,6 @@
 @use "variables" as v;
 
-@mixin flexRow($justify) {
+@mixin flexRow($justify: start) {
   display: flex;
   justify-content: $justify;
   align-items: center;

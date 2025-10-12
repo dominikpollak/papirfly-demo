@@ -30,11 +30,10 @@
   }
 
   &__sidebarHeader {
-    display: flex;
-    align-items: center;
+    @include m.flexRow(start);
     gap: v.$space-3;
     margin-bottom: 12px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
   }
 
@@ -53,9 +52,7 @@
       text-transform: uppercase;
     }
     .row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      @include m.flexRow(space-between);
       margin: 6px 0;
       font-size: 13px;
     }
@@ -166,15 +163,12 @@
 
 .dragCol {
   @include m.col();
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include m.flexRow(center);
   color: v.$icon;
 }
 .bgCol {
   @include m.col();
-  display: flex;
-  align-items: center;
+  @include m.flexRow();
   gap: v.$space-2;
 }
 .bgSwatch {
@@ -191,12 +185,10 @@
 .settingsBtn {
   position: fixed;
   bottom: v.$space-4;
+  @include m.flexRow(center);
   left: 50%;
   transform: translateX(-50%);
   background-color: v.$settingsBtn;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 50%;
   border: 1px solid v.$content;
   width: 60px;
