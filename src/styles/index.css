@@ -205,14 +205,14 @@
   height: 50px;
   aspect-ratio: square;
   transition-duration: 200ms;
-  transform-origin: center;
   cursor: pointer;
 }
 .settingsBtn > svg {
   color: white;
 }
 .settingsBtn:hover {
-  scale: 1.05;
+  filter: brightness(120%);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.12);
 }
 
 .closeBtn {
@@ -258,7 +258,8 @@
   text-decoration: none;
 }
 .grid-even .tile:hover {
-  background-position: 60% 60%;
+  background-position: 55% 55%;
+  transform: scale(1.02);
 }
 
 .grid-mixed {
@@ -311,14 +312,25 @@
   text-decoration: none;
 }
 .grid-mixed .tile:hover {
-  background-position: 60% 60%;
+  background-position: 55% 55%;
+  transform: scale(1.02);
 }
 
 .mainPage {
   padding: 4rem 0;
   width: 100%;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .gridContainer {
   width: 100%;
   margin: 70px auto;
