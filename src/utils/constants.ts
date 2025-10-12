@@ -1,10 +1,10 @@
 export const COLOR_OPTIONS = [
   {
-    value: "linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)",
+    value: "linear-gradient(135deg, #1e3c72 0%, #2e5ba9ff 100%)",
     label: "Deep Blue",
   },
   {
-    value: "linear-gradient(135deg, #134e5e 0%, #71b280 100%)",
+    value: "linear-gradient(135deg, #134e5e 0%, #63a573ff 100%)",
     label: "Forest Green",
   },
   {

@@ -35,10 +35,9 @@ export const GridSection = () => {
                   key={`${i}-${g.image ?? "noimg"}`}
                   className="tile"
                   style={{
-                    background: g.color,
-                    ...(isValidUrl(g.image)
-                      ? { backgroundImage: `url(${g.image})` }
-                      : {}),
+                    backgroundImage: isValidUrl(g.image)
+                      ? `url(${g.image})`
+                      : g.color,
                   }}
                 >
                   {g.text}

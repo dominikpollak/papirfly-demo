@@ -39,7 +39,7 @@ function App() {
         styleOverrides: {
           outlined: {
             height: 35,
-            fontSize: 12,
+            fontSize: 14,
             display: "flex",
             alignItems: "center",
           },

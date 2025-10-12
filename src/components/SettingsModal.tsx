@@ -103,9 +103,11 @@ export const SettingsModal = () => {
                 <span>Display</span>
                 <Select
                   size="small"
-                  fullWidth
                   value={layout}
                   onChange={(e) => setLayout(e.target.value)}
+                  sx={{
+                    width: "150px",
+                  }}
                 >
                   <MenuItem value="even">Even layout</MenuItem>
                   <MenuItem value="mixed">Mixed layout</MenuItem>
@@ -286,7 +288,7 @@ export const SettingsModal = () => {
                                 <div className="col textCol">
                                   <TextField
                                     size="small"
-                                    placeholder="Label"
+                                    placeholder="Tile text"
                                     value={tile.text}
                                     onChange={(e) =>
                                       setGrid(
@@ -304,7 +306,7 @@ export const SettingsModal = () => {
                                 <div className="col linkCol">
                                   <TextField
                                     size="small"
-                                    placeholder="Enter URL"
+                                    placeholder="Image URL"
                                     value={tile.image || ""}
                                     onChange={(e) =>
                                       updateTile(tile.id, {

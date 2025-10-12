@@ -15,7 +15,7 @@ body {
 h1,
 h2 {
   text-align: center;
-  line-height: 1;
+  line-height: 1.05;
 }
 
 h1 {
@@ -34,5 +34,5 @@ h2 {
 }
 
 hr {
-  background-color: v.$darkBg !important;
+  border-color: v.$border !important;
 }
