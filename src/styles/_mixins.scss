@@ -23,6 +23,7 @@
   height: $size;
   transition-duration: 600ms;
   text-decoration: none;
+  overflow: hidden;
 
   &:hover {
     background-position: 65% 55%;

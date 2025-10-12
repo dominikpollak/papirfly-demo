@@ -1,0 +1,113 @@
+@use "../variables" as v;
+@use "../mixins" as m;
+
+.grid-even {
+  display: grid;
+  width: 100%;
+  max-width: v.$container-xl;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+
+  .tile {
+    @include m.baseTile();
+  }
+}
+
+.grid-mixed {
+  width: 100%;
+  display: grid;
+  max-width: v.$container-xl;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 30px;
+
+  @media (min-width: v.$container-lg) {
+    > * {
+      grid-column: span 1;
+    }
+    //   1fr 1fr 2fr
+    > *:nth-child(6n + 3) {
+      grid-column: 3 / span 2;
+    }
+
+    //   2fr 1fr 1fr
+    > *:nth-child(6n + 4) {
+      grid-column: 1 / span 2;
+    }
+  }
+
+  @media (max-width: v.$container-lg) and (min-width: v.$container-md) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    overflow-x: hidden;
+
+    > * {
+      grid-column: span 2;
+    }
+
+    > *:nth-child(4n + 1) {
+      grid-column: span 3;
+    }
+
+    > *:nth-child(4n + 4) {
+      grid-column: span 3;
+    }
+  }
+
+  @media (max-width: v.$container-md) {
+    grid-template-columns: 1fr;
+  }
+
+  .tile {
+    @include m.baseTile(270px);
+  }
+}
+
+.mainPage {
+  padding: v.$space-7 0;
+  width: 100%;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.gridContainer {
+  width: 100%;
+  margin: 60px auto 90px;
+}
+
+.textFieldRow {
+  @include m.flexRow(space-between);
+  gap: v.$space-3;
+  height: fit-content;
+  margin-top: v.$space-2;
+
+  span {
+    min-width: 60px;
+    font-size: 14px;
+    color: v.$grayText;
+  }
+}
+
+.selectCol {
+  @include m.flexCol(start);
+  gap: v.$space-2;
+
+  span {
+    min-width: 60px;
+    font-size: 13px;
+    color: v.$grayText;
+  }
+}
+
+.grid {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 20px;
+}

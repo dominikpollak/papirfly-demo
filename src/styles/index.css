@@ -258,6 +258,7 @@
   height: 370px;
   transition-duration: 600ms;
   text-decoration: none;
+  overflow: hidden;
 }
 .grid-even .tile:hover {
   background-position: 65% 55%;
@@ -318,6 +319,7 @@
   height: 270px;
   transition-duration: 600ms;
   text-decoration: none;
+  overflow: hidden;
 }
 .grid-mixed .tile:hover {
   background-position: 65% 55%;
