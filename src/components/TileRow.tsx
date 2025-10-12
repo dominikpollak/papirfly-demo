@@ -23,7 +23,7 @@ interface TileRowProps {
   deleteTile: (id: string) => void;
 }
 
-export const TileRowComponent = memo(
+export const TileRow = memo(
   ({ tile, index, updateTile, deleteTile }: TileRowProps) => {
     const [color, setColor] = useState(tile.color);
     const [image, setImage] = useState(tile.image || "");

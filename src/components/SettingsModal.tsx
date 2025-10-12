@@ -23,7 +23,7 @@ import { useCallback, useState } from "react";
 import type { Grid } from "../types/gridTypes";
 import { COLOR_OPTIONS } from "../utils/constants";
 import { updateGridData } from "../api/updateGrid";
-import { TileRowComponent } from "./TileRow";
+import { TileRow } from "./TileRow";
 
 const makeTile = (): Grid => ({
   id: `${Date.now()}-${Math.random().toString().slice(0, 9)}`,
@@ -236,7 +236,7 @@ export const SettingsModal = () => {
                         {...provided.droppableProps}
                       >
                         {grid.map((tile, index) => (
-                          <TileRowComponent
+                          <TileRow
                             key={tile.id}
                             tile={tile}
                             index={index}
