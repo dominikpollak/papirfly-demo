@@ -1,5 +1,4 @@
 import { useGridStore } from "../stores/gridStore";
-import { isValidUrl } from "../utils/utils";
 
 export const GridSection = () => {
   const { grid, layout, maxRenderCount, title, subTitle } = useGridStore();
@@ -38,9 +37,7 @@ export const GridSection = () => {
                   className="tile"
                   onClick={(e) => !g.link && e.preventDefault()}
                   style={{
-                    backgroundImage: isValidUrl(g.image)
-                      ? `url(${g.image})`
-                      : g.color,
+                    backgroundImage: g.image ? `url(${g.image})` : g.color,
                   }}
                 >
                   <span>{g.text}</span>

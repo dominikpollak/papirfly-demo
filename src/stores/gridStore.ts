@@ -6,8 +6,8 @@ type GridStore = {
   layout: GridLayoutType;
   grid: Grid[];
   setLayout: (layout: GridLayoutType) => void;
-  //could get separated into add,delete,update setters
-  setGrid: (grid: Grid[]) => void;
+  //prevState like logic to prevent putting grid in useCallback dependency array
+  setGrid: (grid: Grid[] | ((currentGrid: Grid[]) => Grid[])) => void;
   maxRenderCount: number;
   setMaxRenderCount: (count: number) => void;
   title: string;
@@ -23,8 +23,8 @@ export const useGridStore = create<GridStore>()(
       setLayout: (layout) => set({ layout }),
       grid: [],
       setGrid: (grid) =>
-        set(() => ({
-          grid,
+        set((state) => ({
+          grid: typeof grid === "function" ? grid(state.grid) : grid,
         })),
       maxRenderCount: -1,
       setMaxRenderCount: (count) =>

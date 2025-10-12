@@ -2,38 +2,28 @@ import {
   Box,
   Button,
   Divider,
-  IconButton,
   MenuItem,
   Modal,
   Select,
   Switch,
   TextField,
-  Tooltip,
   Typography,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
-import {
-  DragDropContext,
-  Droppable,
-  Draggable,
-  type DropResult,
-} from "@hello-pangea/dnd";
+import { DragDropContext, Droppable, type DropResult } from "@hello-pangea/dnd";
 import { useGridStore } from "../stores/gridStore";
 import {
   Apps,
   ArrowDropDown,
   Close,
-  DeleteRounded,
-  MoreHoriz,
   Settings,
   SwapVert,
 } from "@mui/icons-material";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import type { Grid } from "../types/gridTypes";
 import { COLOR_OPTIONS } from "../utils/constants";
-import { isValidUrl } from "../utils/utils";
 import { updateGridData } from "../api/updateGrid";
+import { TileRowComponent } from "./TileRow";
 
 const makeTile = (): Grid => ({
   id: `${Date.now()}-${Math.random().toString().slice(0, 9)}`,
@@ -67,21 +57,34 @@ export const SettingsModal = () => {
     setGrid(newGrid);
   };
 
-  const deleteTile = (id: string) => {
-    setGrid(grid.filter((t) => t.id !== id));
-  };
+  const deleteTile = useCallback(
+    (id: string) => {
+      setGrid((currentGrid) => currentGrid.filter((t) => t.id !== id));
+    },
+    [setGrid]
+  );
 
-  const onDragEnd = (result: DropResult) => {
-    if (!result.destination) return;
-    const items = Array.from(grid);
-    const [moved] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, moved);
-    setGrid(items);
-  };
+  const onDragEnd = useCallback(
+    (result: DropResult) => {
+      if (!result.destination) return;
+      setGrid((currentGrid) => {
+        const items = Array.from(currentGrid);
+        const [moved] = items.splice(result.source.index, 1);
+        items.splice(result.destination?.index || 0, 0, moved);
+        return items;
+      });
+    },
+    [setGrid]
+  );
 
-  const updateTile = (id: string, patch: Partial<Grid>) => {
-    setGrid(grid.map((t) => (t.id === id ? { ...t, ...patch } : t)));
-  };
+  const updateTile = useCallback(
+    (id: string, patch: Partial<Grid>) => {
+      setGrid((currentGrid) =>
+        currentGrid.map((t) => (t.id === id ? { ...t, ...patch } : t))
+      );
+    },
+    [setGrid]
+  );
 
   return (
     <>
@@ -233,154 +236,13 @@ export const SettingsModal = () => {
                         {...provided.droppableProps}
                       >
                         {grid.map((tile, index) => (
-                          <Draggable
+                          <TileRowComponent
                             key={tile.id}
-                            draggableId={tile.id}
+                            tile={tile}
                             index={index}
-                          >
-                            {(prov) => (
-                              <div
-                                className="tileRow"
-                                ref={prov.innerRef}
-                                {...prov.draggableProps}
-                              >
-                                <div
-                                  className="col dragCol"
-                                  {...prov.dragHandleProps}
-                                >
-                                  <DragIndicatorIcon fontSize="small" />
-                                </div>
-
-                                <div className="col bgCol">
-                                  <Select
-                                    size="small"
-                                    value={tile.color}
-                                    sx={{
-                                      "& .MuiOutlinedInput-notchedOutline": {
-                                        border: "none",
-                                      },
-                                      "& .MuiSelect-select": {
-                                        paddingLeft: 0,
-                                      },
-                                    }}
-                                    renderValue={(selectedValue) => (
-                                      <div
-                                        className="swatch"
-                                        style={{
-                                          background: selectedValue,
-                                        }}
-                                      />
-                                    )}
-                                    onChange={(e) => {
-                                      updateTile(tile.id, {
-                                        color: e.target.value,
-                                      });
-                                    }}
-                                  >
-                                    {COLOR_OPTIONS.map((option) => (
-                                      <MenuItem
-                                        key={option.value}
-                                        value={option.value}
-                                        style={{
-                                          display: "flex",
-                                          alignItems: "center",
-                                          gap: "10px",
-                                        }}
-                                      >
-                                        <div
-                                          className="swatch"
-                                          style={{
-                                            background: option.value,
-                                          }}
-                                        ></div>
-                                        <span>{option.label}</span>
-                                      </MenuItem>
-                                    ))}
-                                    <Divider component="li" />
-                                    <Box
-                                      sx={{
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        width: 260,
-                                        padding: "0 10px",
-                                      }}
-                                    >
-                                      <Typography
-                                        variant="caption"
-                                        color="text.secondary"
-                                      >
-                                        Image URL
-                                      </Typography>
-                                      <TextField
-                                        size="small"
-                                        placeholder="Image URL"
-                                        value={tile.image || ""}
-                                        error={
-                                          !!(
-                                            tile.image &&
-                                            !isValidUrl(tile.image)
-                                          )
-                                        }
-                                        onChange={(e) =>
-                                          updateTile(tile.id, {
-                                            image: e.target.value,
-                                          })
-                                        }
-                                        fullWidth
-                                      />
-                                    </Box>
-                                  </Select>
-                                </div>
-
-                                <div className="col textCol">
-                                  <TextField
-                                    size="small"
-                                    placeholder="Tile text"
-                                    value={tile.text}
-                                    onChange={(e) =>
-                                      updateTile(tile.id, {
-                                        text: e.target.value,
-                                      })
-                                    }
-                                    fullWidth
-                                  />
-                                </div>
-
-                                <div className="col linkCol">
-                                  <TextField
-                                    size="small"
-                                    placeholder="Link URL"
-                                    value={tile.link || ""}
-                                    error={
-                                      !!(tile.link && !isValidUrl(tile.link))
-                                    }
-                                    onChange={(e) =>
-                                      updateTile(tile.id, {
-                                        link: e.target.value,
-                                      })
-                                    }
-                                    fullWidth
-                                  />
-                                </div>
-
-                                <div className="col actionsCol">
-                                  <Tooltip title="Delete">
-                                    <IconButton
-                                      size="small"
-                                      onClick={() => deleteTile(tile.id)}
-                                    >
-                                      <DeleteRounded />
-                                    </IconButton>
-                                  </Tooltip>
-                                  <Tooltip title="More">
-                                    <IconButton size="small">
-                                      <MoreHoriz />
-                                    </IconButton>
-                                  </Tooltip>
-                                </div>
-                              </div>
-                            )}
-                          </Draggable>
+                            updateTile={updateTile}
+                            deleteTile={deleteTile}
+                          />
                         ))}
                         {provided.placeholder}
                       </div>
