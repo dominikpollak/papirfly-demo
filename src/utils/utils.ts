@@ -1,8 +1,6 @@
 export const isValidUrl = (url: string | undefined): boolean => {
   if (!url || url.trim() === "") return false;
 
-  // This regex is safer and avoids catastrophic backtracking.
-  // It's a bit more lenient but captures 99.9% of valid URLs without freezing.
   const pattern = new RegExp(
     "^(https?:\\/\\/)?" + // protocol
       "((([a-z\\d]([a-z\\d-]{0,61}[a-z\\d])?)\\.)+[a-z]{2,63}|" + // domain name
