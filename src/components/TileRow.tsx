@@ -31,7 +31,7 @@ export const TileRowComponent = memo(
     const [link, setLink] = useState(tile.link || "");
     const [isLinkValid, setIsLinkValid] = useState(true);
 
-    // local states had to be introduces to prevent list rerenders on every keystroke
+    // local states had to be introduced to prevent list rerenders on every keystroke
     // updates of tiles now only happen after blur
     // better store setters would solve this issue
     useEffect(() => {
