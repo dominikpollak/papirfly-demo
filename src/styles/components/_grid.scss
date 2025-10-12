@@ -61,49 +61,9 @@
   }
 }
 
-.mainPage {
-  padding: v.$space-7 0;
-  width: 100%;
-  opacity: 0;
-  animation: fadeIn 0.5s ease-out forwards;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 .gridContainer {
   width: 100%;
   margin: 60px auto 90px;
-}
-
-.textFieldRow {
-  @include m.flexRow(space-between);
-  gap: v.$space-3;
-  height: fit-content;
-  margin-top: v.$space-2;
-
-  span {
-    min-width: 60px;
-    font-size: 14px;
-    color: v.$grayText;
-  }
-}
-
-.selectCol {
-  @include m.flexCol(start);
-  gap: v.$space-2;
-
-  span {
-    min-width: 60px;
-    font-size: 13px;
-    color: v.$grayText;
-  }
 }
 
 .grid {

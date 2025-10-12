@@ -21,7 +21,7 @@
 }
 .settingsModal__sidebar {
   padding: 16px;
-  border-right: 1px solid #eef0f2;
+  border-right: 1px solid #e2e7ee;
   overflow: auto;
   background-color: #fff;
 }
@@ -85,11 +85,11 @@
   align-items: end;
   overflow: auto;
   min-width: 800px;
-  padding: 8px 16px;
+  padding: 0.5rem 18px;
 }
 @media (min-width: 1024px) {
   .settingsModal__content {
-    padding: 16px 28px;
+    padding: 1rem 28px;
   }
 }
 .settingsModal__content .contentHeader {
@@ -107,15 +107,15 @@
   border-radius: 0.5rem;
 }
 .tilesTable__head {
-  padding: 8px 12px;
+  padding: 0.5rem 12px;
   font-size: 11px;
   color: #6b7280;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  border-radius: 8px 8px 0 0;
+  border-radius: 0.5rem 0.5rem 0 0;
 }
 .tilesTable__body {
-  border-radius: 0 0 8px 8px;
+  border-radius: 0 0 0.5rem 0.5rem;
   overflow: hidden;
   background: #fafbfc;
 }
@@ -167,7 +167,7 @@
 .bgCol {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
 }
 .bgCol svg {
   color: #9fa7bb;
@@ -185,7 +185,7 @@
   display: flex;
   justify-content: end;
   align-items: center;
-  gap: 4px;
+  gap: 0.25rem;
 }
 .actionsCol svg {
   color: #9fa7bb;
@@ -235,6 +235,33 @@
 }
 
 .grayText {
+  color: #516173;
+}
+
+.textFieldRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-top: 0.5rem;
+}
+.textFieldRow span {
+  min-width: 60px;
+  font-size: 13px;
+  color: #516173;
+}
+
+.selectCol {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 0.5rem;
+}
+.selectCol span {
+  min-width: 60px;
+  font-size: 13px;
   color: #516173;
 }
 
@@ -329,6 +356,17 @@
   padding: 1.5rem;
 }
 
+.gridContainer {
+  width: 100%;
+  margin: 60px auto 90px;
+}
+
+.grid {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+
 .mainPage {
   padding: 4rem 0;
   width: 100%;
@@ -344,44 +382,6 @@
     opacity: 1;
   }
 }
-.gridContainer {
-  width: 100%;
-  margin: 60px auto 90px;
-}
-
-.textFieldRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  height: -moz-fit-content;
-  height: fit-content;
-  margin-top: 0.5rem;
-}
-.textFieldRow span {
-  min-width: 60px;
-  font-size: 14px;
-  color: #516173;
-}
-
-.selectCol {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 0.5rem;
-}
-.selectCol span {
-  min-width: 60px;
-  font-size: 13px;
-  color: #516173;
-}
-
-.grid {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0 20px;
-}
-
 :root {
   font-family: "Poppins", sans-serif;
   color: #232323;

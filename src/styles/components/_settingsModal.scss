@@ -24,7 +24,7 @@
 
   &__sidebar {
     padding: 16px;
-    border-right: 1px solid #eef0f2;
+    border-right: 1px solid v.$border;
     overflow: auto;
     background-color: v.$content;
   }
@@ -93,10 +93,10 @@
   @include m.flexCol(end);
   overflow: auto;
   min-width: 800px;
-  padding: 8px 16px;
+  padding: v.$space-2 18px;
 
   @media (min-width: v.$container-lg) {
-    padding: 16px 28px;
+    padding: v.$space-3 28px;
   }
 
   .contentHeader {
@@ -113,16 +113,16 @@
   border-radius: v.$space-2;
 
   &__head {
-    padding: 8px 12px;
+    padding: v.$space-2 12px;
     font-size: 11px;
     color: #6b7280;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    border-radius: 8px 8px 0 0;
+    border-radius: v.$space-2 v.$space-2 0 0;
   }
 
   &__body {
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 v.$space-2 v.$space-2;
     overflow: hidden;
     background: #fafbfc;
   }
@@ -175,7 +175,7 @@
   @include m.col();
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: v.$space-2;
 }
 .bgSwatch {
   @include m.col();
@@ -185,7 +185,7 @@
   @include m.col();
   width: 100%;
   @include m.flexRow(end);
-  gap: 4px;
+  gap: v.$space-1;
 }
 
 .settingsBtn {
@@ -233,4 +233,28 @@
 
 .grayText {
   color: v.$grayText;
+}
+
+.textFieldRow {
+  @include m.flexRow(space-between);
+  gap: v.$space-3;
+  height: fit-content;
+  margin-top: v.$space-2;
+
+  span {
+    min-width: 60px;
+    font-size: 13px;
+    color: v.$grayText;
+  }
+}
+
+.selectCol {
+  @include m.flexCol(start);
+  gap: v.$space-2;
+
+  span {
+    min-width: 60px;
+    font-size: 13px;
+    color: v.$grayText;
+  }
 }

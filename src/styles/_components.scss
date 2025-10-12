@@ -2,3 +2,19 @@
 @use "mixins" as m;
 @use "./components/settingsModal";
 @use "./components/grid";
+
+.mainPage {
+  padding: v.$space-7 0;
+  width: 100%;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
