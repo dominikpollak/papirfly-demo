@@ -14,7 +14,7 @@ Každá dlaždice: barva/obrázek pozadí, text a odkaz
 
 Omezení počtu renderovaných dlaždic nebo „Load all“
 
-Moderní UI pomocí MUI + SASS
+UI pomocí Material UI + SASS + MUI icons
 
 Ukládání stavu přes Zustand (persist) do Local Storage
 
