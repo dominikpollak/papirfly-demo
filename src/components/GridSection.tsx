@@ -31,7 +31,9 @@ export const GridSection = () => {
           >
             {group.map((g, i) => {
               return (
-                <div
+                <a
+                  href={g.link}
+                  target="_blank"
                   key={`${i}-${g.image ?? "noimg"}`}
                   className="tile"
                   style={{
@@ -41,7 +43,7 @@ export const GridSection = () => {
                   }}
                 >
                   {g.text}
-                </div>
+                </a>
               );
             })}
           </div>

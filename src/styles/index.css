@@ -255,6 +255,7 @@
   background-position: center;
   height: 370px;
   transition-duration: 600ms;
+  text-decoration: none;
 }
 .grid-even .tile:hover {
   background-position: 60% 60%;
@@ -307,6 +308,7 @@
   background-position: center;
   height: 270px;
   transition-duration: 600ms;
+  text-decoration: none;
 }
 .grid-mixed .tile:hover {
   background-position: 60% 60%;

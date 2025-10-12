@@ -5,4 +5,5 @@ export interface Grid {
   color: string;
   image?: string;
   text?: string;
+  link?: string;
 }

@@ -32,12 +32,14 @@ import {
 import { useState } from "react";
 import type { Grid } from "../types/gridTypes";
 import { COLOR_OPTIONS } from "../utils/constants";
+import { isValidUrl } from "../utils/utils";
 
 const makeTile = (): Grid => ({
   id: `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
   color: COLOR_OPTIONS[0].value,
   text: "",
   image: "",
+  link: "",
 });
 
 export const SettingsModal = () => {
@@ -282,6 +284,39 @@ export const SettingsModal = () => {
                                         <span>{option.label}</span>
                                       </MenuItem>
                                     ))}
+                                    <Divider component="li" />
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        width: 260,
+                                        padding: "0 10px",
+                                      }}
+                                    >
+                                      <Typography
+                                        variant="caption"
+                                        color="text.secondary"
+                                      >
+                                        Image URL
+                                      </Typography>
+                                      <TextField
+                                        size="small"
+                                        placeholder="Image URL"
+                                        value={tile.image || ""}
+                                        error={
+                                          !!(
+                                            tile.image &&
+                                            !isValidUrl(tile.image)
+                                          )
+                                        }
+                                        onChange={(e) =>
+                                          updateTile(tile.id, {
+                                            image: e.target.value,
+                                          })
+                                        }
+                                        fullWidth
+                                      />
+                                    </Box>
                                   </Select>
                                 </div>
 
@@ -291,13 +326,9 @@ export const SettingsModal = () => {
                                     placeholder="Tile text"
                                     value={tile.text}
                                     onChange={(e) =>
-                                      setGrid(
-                                        grid.map((t) =>
-                                          t.id === tile.id
-                                            ? { ...t, text: e.target.value }
-                                            : t
-                                        )
-                                      )
+                                      updateTile(tile.id, {
+                                        text: e.target.value,
+                                      })
                                     }
                                     fullWidth
                                   />
@@ -306,11 +337,14 @@ export const SettingsModal = () => {
                                 <div className="col linkCol">
                                   <TextField
                                     size="small"
-                                    placeholder="Image URL"
-                                    value={tile.image || ""}
+                                    placeholder="Link URL"
+                                    value={tile.link || ""}
+                                    error={
+                                      !!(tile.link && !isValidUrl(tile.link))
+                                    }
                                     onChange={(e) =>
                                       updateTile(tile.id, {
-                                        image: e.target.value,
+                                        link: e.target.value,
                                       })
                                     }
                                     fullWidth
